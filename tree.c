@@ -238,11 +238,15 @@ int main(int argc, char **argv)
 	case 'H':
 	  Hflag = TRUE;
 	  Xflag = FALSE;
-	  if (argv[n] == NULL) {
+	  if (strlen(argv[i]) > j+1) {
+	    host = scopy(argv[i]+j+1);
+	    j = strlen(argv[i])-1;
+	  } else if (argv[n] == NULL) {
 	    fprintf(stderr,"tree: missing argument to -H option.\n");
 	    exit(1);
+	  } else {
+	    host = argv[n++];
 	  }
-	  host = argv[n++];
 	  sp = "&nbsp;";
 	  break;
 	case 'T':
