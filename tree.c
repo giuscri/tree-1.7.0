@@ -278,11 +278,15 @@ int main(int argc, char **argv)
 	  }
 	  break;
 	case 'o':
-	  if (argv[n] == NULL) {
+	  if (strlen(argv[i]) > j+1) {
+	    outfilename = scopy(argv[i]+j+1);
+	    j = strlen(argv[i])-1;
+	  } else if (argv[n] == NULL) {
 	    fprintf(stderr,"tree: missing argument to -o option.\n");
 	    exit(1);
+	  } else {
+	    outfilename = argv[n++];
 	  }
-	  outfilename = argv[n++];
 	  break;
 	case '-':
 	  if (j == 1) {
