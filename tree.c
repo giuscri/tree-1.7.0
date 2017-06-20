@@ -250,11 +250,15 @@ int main(int argc, char **argv)
 	  sp = "&nbsp;";
 	  break;
 	case 'T':
-	  if (argv[n] == NULL) {
+	  if (strlen(argv[i]) > j+1) {
+	    title = scopy(argv[i]+j+1);
+	    j = strlen(argv[i])-1;
+	  } else if (argv[n] == NULL) {
 	    fprintf(stderr,"tree: missing argument to -T option.\n");
 	    exit(1);
+	  } else {
+	    title = argv[n++];
 	  }
-	  title = argv[n++];
 	  break;
 	case 'R':
 	  Rflag = TRUE;
