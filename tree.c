@@ -248,7 +248,10 @@ int main(int argc, char **argv)
 	  Rflag = TRUE;
 	  break;
 	case 'L':
-	  if ((sLevel = argv[n++]) == NULL) {
+	  if (strlen(argv[i]) > j+1) {
+	    sLevel = scopy(argv[i]+j+1);
+	    j = strlen(argv[i])-1;
+	  } else if ((sLevel = argv[n++]) == NULL) {
 	    fprintf(stderr,"tree: Missing argument to -L option.\n");
 	    exit(1);
 	  }
