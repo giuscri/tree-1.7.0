@@ -182,11 +182,15 @@ int main(int argc, char **argv)
 	  xdev = TRUE;
 	  break;
 	case 'P':
-	  if (argv[n] == NULL) {
+	  if (strlen(argv[i]) > j+1) {
+	    pattern = scopy(argv[i]+j+1);
+	    j = strlen(argv[i])-1;
+	  } else if (argv[n] == NULL) {
 	    fprintf(stderr,"tree: missing argument to -P option.\n");
 	    exit(1);
+	  } else {
+	    pattern = argv[n++];
 	  }
-	  pattern = argv[n++];
 	  break;
 	case 'I':
 	  if (argv[n] == NULL) {
